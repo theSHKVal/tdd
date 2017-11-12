@@ -1,0 +1,50 @@
+﻿<Window x:Class="TagCloudVisualisation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="TagCloud" Height="600" Width="800">
+    <DockPanel>
+        <StackPanel Name="Controls" Orientation="Horizontal" DockPanel.Dock="Bottom" Height="150" HorizontalAlignment="Center">
+            <StackPanel Margin="10">
+                <Button Name="NewCloudButton" Height="30" Width="70" Margin="10, 10, 10, 0" Click="NewCloudButton_Click">New cloud</Button>
+                <Label>X:</Label>
+                <TextBox Name="CenterXTextBox"></TextBox>
+                <Label>Y:</Label>
+                <TextBox Name="CenterYTextBox"></TextBox>
+            </StackPanel>
+            <StackPanel Margin="10">
+                <Button Name="AddButton" Height="30" Width="70" Margin="10, 10, 10, 0" Click="AddButton_Click">Add next</Button>
+                <Label>Width:</Label>
+                <TextBox Name="WidthTextBox"></TextBox>
+                <Label>Height:</Label>
+                <TextBox Name="HeightTextBox"></TextBox>
+            </StackPanel>
+            
+            <Button Name="ExampleButton" Height="30" Width="70" Margin="20, 0, 10, 0" Click="ExampleButton_Click">Example</Button>
+            <Button Name="ClearButton" Height="30" Width="70" Margin="20, 0, 10, 0" Click="ClearButton_Click">Clear</Button>
+        </StackPanel>
+        <Border DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="2" Height="Auto">
+            <ItemsControl ItemsSource="{Binding Cloud}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="Canvas.Left" Value="{Binding X}"></Setter>
+                        <Setter Property="Canvas.Top" Value="{Binding Y}"></Setter>
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Rectangle Width="{Binding Width}" Height="{Binding Height}" Stroke="Black" StrokeThickness="1"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Border>
+    </DockPanel>
+</Window>
