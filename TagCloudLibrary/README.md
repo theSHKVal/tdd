@@ -1,1 +1,1 @@
-![TagCloud](https://puu.sh/ykxLY/a7d82310f4.png)
+![TagCloud](https://puu.sh/ykXZ0/b74d9182d0.png)
